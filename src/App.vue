@@ -30,7 +30,9 @@
       >
         <v-icon>menu</v-icon>
       </v-btn>
-      <v-toolbar-title>Ad application</v-toolbar-title>
+      <v-toolbar-title>
+        <router-link to="/" tag="span" class="pointer">Ad application</router-link>
+      </v-toolbar-title>
 
       <v-spacer></v-spacer>
 
@@ -73,3 +75,9 @@ export default {
   })
 }
 </script>
+
+<style scoped>
+  .pointer {
+    cursor: pointer;
+  }
+</style>
