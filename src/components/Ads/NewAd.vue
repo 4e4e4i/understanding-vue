@@ -1,8 +1,14 @@
 <template>
   <v-container>
     <v-layout row>
-      <v-flex xs12>
-        <h1>NewAd</h1>
+      <v-flex
+        xs12
+        sm6
+        offset-sm-3
+      >
+        <h1 class="text--secondary mb-3">
+          Create new ad
+        </h1>
       </v-flex>
     </v-layout>
   </v-container>

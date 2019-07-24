@@ -9,6 +9,9 @@
               :key="ad.id"
               :src="ad.imageSrc"
             >
+              <div class="carousel-link">
+                <v-btn class="error" :to="'/ad/' + ad.id">{{ ad.title }}</v-btn>
+              </div>
             </v-carousel-item>
           </v-carousel>
         </v-flex>
@@ -20,6 +23,7 @@
         <v-flex
           xs12
           sm6
+          md4
           v-for="ad in ads"
           :key="ad.id"
         >
@@ -35,7 +39,7 @@
             <v-card-text>{{ad.description}}</v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn text>Open</v-btn>
+              <v-btn text :to="'/ad/' + ad.id">Open</v-btn>
               <v-btn raised class="primary">Buy</v-btn>
             </v-card-actions>
           </v-card>
@@ -78,5 +82,14 @@ export default {
 </script>
 
 <style scoped>
+  .carousel-link {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    background: rgba(0, 0, 0, .3);
+    transform: translateX(-50%);
 
+    padding: 5px 15px;
+    border-radius: 5px 5px 0 0;
+  }
 </style>
