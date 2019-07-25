@@ -12,10 +12,24 @@
           :to="link.url"
         >
           <v-list-item-icon>
-            <v-icon>{{ link.icon }}</v-icon>
+            <v-icon>
+              {{ link.icon }}
+            </v-icon>
           </v-list-item-icon>
           <v-list-item-content>
             <v-list-item-title v-text="link.title" />
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item
+          @click="onLogout"
+        >
+          <v-list-item-icon>
+            <v-icon>
+              exit_to_app
+            </v-icon>
+          </v-list-item-icon>
+          <v-list-item-content v-if="isUserLoggedIn">
+            <v-list-item-title v-text="'Logout'" />
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -57,6 +71,16 @@
           </v-icon>
           {{ link.title }}
         </v-btn>
+        <v-btn
+          v-if="isUserLoggedIn"
+          text
+          @click="onLogout"
+        >
+          <v-icon left>
+            exit_to_app
+          </v-icon>
+          Logout
+        </v-btn>
       </v-toolbar-items>
     </v-app-bar>
 
@@ -90,23 +114,37 @@
 export default {
   name: 'App',
   data: () => ({
-    drawer: false,
-    links: [
-      { title: 'Login', icon: 'lock', url: '/login' },
-      { title: 'Registration', icon: 'face', url: '/registration' },
-      { title: 'Orders', icon: 'bookmark_border', url: '/orders' },
-      { title: 'New ad', icon: 'note_add', url: '/new' },
-      { title: 'My ads', icon: 'list', url: '/list' }
-    ]
+    drawer: false
   }),
   computed: {
     error () {
       return this.$store.getters.error
+    },
+    isUserLoggedIn () {
+      return this.$store.getters.isUserLoggedIn
+    },
+    links () {
+      if (this.isUserLoggedIn) {
+        return [
+          { title: 'Orders', icon: 'bookmark_border', url: '/orders' },
+          { title: 'New ad', icon: 'note_add', url: '/new' },
+          { title: 'My ads', icon: 'list', url: '/list' }
+        ]
+      }
+
+      return [
+        { title: 'Login', icon: 'lock', url: '/login' },
+        { title: 'Registration', icon: 'face', url: '/registration' }
+      ]
     }
   },
   methods: {
     closeError () {
       this.$store.dispatch('clearError')
+    },
+    onLogout () {
+      this.$store.dispatch('logoutUser')
+      this.$router.push('/')
     }
   }
 }

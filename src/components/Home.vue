@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div v-if="!loading">
     <v-container fluid>
       <v-layout row>
         <v-flex xs12>
-          <v-carousel>
+          <v-carousel v-if="promoAds.length > 0">
             <v-carousel-item
               v-for="ad in promoAds"
               :key="ad.id"
@@ -57,14 +57,26 @@
               >
                 Open
               </v-btn>
-              <v-btn
-                raised
-                class="primary"
-              >
-                Buy
-              </v-btn>
+              <app-buy-modal :ad="ad" />
             </v-card-actions>
           </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </div>
+  <div v-else>
+    <v-container>
+      <v-layout row>
+        <v-flex
+          xs12
+          class="text-center pt-10"
+        >
+          <v-progress-circular
+            :size="70"
+            :width="7"
+            color="blue"
+            indeterminate
+          />
         </v-flex>
       </v-layout>
     </v-container>
@@ -79,6 +91,9 @@ export default {
     },
     ads () {
       return this.$store.getters.ads
+    },
+    loading () {
+      return this.$store.getters.loading
     }
   }
 }
