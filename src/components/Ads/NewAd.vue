@@ -104,10 +104,11 @@ export default {
         const ad = {
           title: this.title,
           description: this.description,
-          promo: this.promo
+          promo: this.promo,
+          imageSrc: 'https://miro.medium.com/max/700/1*oZqGznbYXJfBlvGp5gQlYQ.jpeg'
         }
 
-        console.log(ad)
+        this.$store.dispatch('createAd', ad)
       }
     }
   }
