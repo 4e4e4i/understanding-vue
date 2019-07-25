@@ -1,4 +1,5 @@
-import * as fb from 'firebase'
+import * as fb from 'firebase/app'
+import 'firebase/auth'
 
 class User {
   constructor (id) {
@@ -22,6 +23,21 @@ export default {
 
       try {
         const user = await fb.auth().createUserWithEmailAndPassword(email, password)
+        commit('setUser', new User(user.uid))
+        commit('setLoading', false)
+      } catch (error) {
+        commit('setLoading', false)
+        commit('setError', error.message)
+        throw error
+      }
+    },
+
+    async loginUser ({ commit }, { email, password }) {
+      commit('clearError')
+      commit('setLoading', true)
+
+      try {
+        const user = await fb.auth().signInWithEmailAndPassword(email, password)
         commit('setUser', new User(user.uid))
         commit('setLoading', false)
       } catch (error) {
