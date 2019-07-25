@@ -21,33 +21,38 @@
             <v-toolbar-title>Login form</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
-            <v-form v-model="valid" ref="form" validation>
+            <v-form
+              ref="form"
+              v-model="valid"
+              validation
+            >
               <v-text-field
+                v-model="email"
                 label="Email"
                 name="email"
                 prepend-icon="person"
                 :rules="emailRules"
                 type="email"
-                v-model="email"
-              ></v-text-field>
-
+              />
               <v-text-field
+                v-model="password"
                 label="Password"
                 name="password"
                 prepend-icon="lock"
                 type="password"
                 :rules="passwordRules"
-                v-model="password"
-              ></v-text-field>
+              />
             </v-form>
           </v-card-text>
           <v-card-actions>
-            <v-spacer></v-spacer>
+            <v-spacer />
             <v-btn
               :disabled="!valid"
               color="primary"
               @click="onSubmit"
-            >Login</v-btn>
+            >
+              Login
+            </v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>

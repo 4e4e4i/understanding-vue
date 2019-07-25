@@ -5,12 +5,17 @@
         <v-flex xs12>
           <v-carousel>
             <v-carousel-item
-              v-for="ad in ads"
+              v-for="ad in promoAds"
               :key="ad.id"
               :src="ad.imageSrc"
             >
               <div class="carousel-link">
-                <v-btn class="error" :to="'/ad/' + ad.id">{{ ad.title }}</v-btn>
+                <v-btn
+                  class="error"
+                  :to="'/ad/' + ad.id"
+                >
+                  {{ ad.title }}
+                </v-btn>
               </div>
             </v-carousel-item>
           </v-carousel>
@@ -19,13 +24,16 @@
     </v-container>
 
     <v-container grid-list-lg>
-      <v-layout row wrap>
+      <v-layout
+        row
+        wrap
+      >
         <v-flex
+          v-for="ad in ads"
+          :key="ad.id"
           xs12
           sm6
           md4
-          v-for="ad in ads"
-          :key="ad.id"
         >
           <v-card
             max-width="344"
@@ -34,13 +42,27 @@
             <v-img
               height="200px"
               :src="ad.imageSrc"
-            ></v-img>
-            <v-card-title>{{ad.title}}</v-card-title>
-            <v-card-text>{{ad.description}}</v-card-text>
+            />
+            <v-card-title>
+              {{ ad.title }}
+            </v-card-title>
+            <v-card-text>
+              {{ ad.description }}
+            </v-card-text>
             <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn text :to="'/ad/' + ad.id">Open</v-btn>
-              <v-btn raised class="primary">Buy</v-btn>
+              <v-spacer />
+              <v-btn
+                text
+                :to="'/ad/' + ad.id"
+              >
+                Open
+              </v-btn>
+              <v-btn
+                raised
+                class="primary"
+              >
+                Buy
+              </v-btn>
             </v-card-actions>
           </v-card>
         </v-flex>
@@ -51,31 +73,12 @@
 
 <script>
 export default {
-  data () {
-    return {
-      ads: [
-        {
-          title: 'First ad',
-          description: 'Hello i am description',
-          promo: false,
-          imageSrc: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
-          id: '123'
-        },
-        {
-          title: 'Second ad',
-          description: 'Hello i am description',
-          promo: true,
-          imageSrc: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
-          id: '124'
-        },
-        {
-          title: 'Third ad',
-          description: 'Hello i am description',
-          promo: true,
-          imageSrc: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
-          id: '125'
-        }
-      ]
+  computed: {
+    promoAds () {
+      return this.$store.getters.promoAds
+    },
+    ads () {
+      return this.$store.getters.ads
     }
   }
 }

@@ -18,45 +18,51 @@
             dark
             flat
           >
-            <v-toolbar-title>Registration form</v-toolbar-title>
+            <v-toolbar-title>
+              Registration form
+            </v-toolbar-title>
           </v-toolbar>
           <v-card-text>
-            <v-form v-model="valid" ref="form" lazy-validation>
+            <v-form
+              ref="form"
+              v-model="valid"
+              lazy-validation
+            >
               <v-text-field
+                v-model="email"
                 label="Email"
                 name="email"
                 prepend-icon="person"
                 :rules="emailRules"
                 type="email"
-                v-model="email"
-              ></v-text-field>
-
+              />
               <v-text-field
+                v-model="password"
                 label="Password"
                 name="password"
                 prepend-icon="lock"
                 type="password"
                 :rules="passwordRules"
-                v-model="password"
-              ></v-text-field>
-
+              />
               <v-text-field
+                v-model="confirmPassword"
                 label="Confirm Password"
                 name="confirm-password"
                 prepend-icon="lock"
                 type="password"
                 :rules="confirmPasswordRules"
-                v-model="confirmPassword"
-              ></v-text-field>
+              />
             </v-form>
           </v-card-text>
           <v-card-actions>
-            <v-spacer></v-spacer>
+            <v-spacer />
             <v-btn
               :disabled="!valid"
               color="primary"
               @click="onSubmit"
-            >Create account</v-btn>
+            >
+              Create account
+            </v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>

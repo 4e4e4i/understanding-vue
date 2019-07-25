@@ -10,58 +10,69 @@
           Create new ad
         </h1>
         <v-form
-          v-model="valid"
           ref="form"
+          v-model="valid"
           validation
           class="mb-3"
         >
           <v-text-field
+            v-model="title"
             label="Ad title"
             name="title"
             type="text"
-            v-model="title"
             required
             :rules="[v => !!v || 'Title is required']"
-          ></v-text-field>
+          />
 
           <v-textarea
+            v-model="description"
             label="Ad description"
             name="description"
             required
             :rules="[v => !!v || 'Description is required']"
-            v-model="description"
-          ></v-textarea>
+          />
         </v-form>
 
         <v-container>
-          <v-layout row class="mb-3">
+          <v-layout
+            row
+            class="mb-3"
+          >
             <v-flex xs12>
               <v-btn
                 class="warning"
               >
                 Upload
-                <v-icon right dark>cloud_upload</v-icon>
+                <v-icon
+                  right
+                  dark
+                >
+                  cloud_upload
+                </v-icon>
               </v-btn>
             </v-flex>
-
           </v-layout>
           <v-layout row>
             <v-flex xs12>
-              <img src="" height="100" alt="">
+              <img
+                src=""
+                height="100"
+                alt=""
+              >
             </v-flex>
           </v-layout>
           <v-layout row>
             <v-flex xs12>
               <v-switch
-                color="primary"
                 v-model="promo"
+                color="primary"
                 label="Add to promo?"
-              ></v-switch>
+              />
             </v-flex>
           </v-layout>
           <v-layout row>
             <v-flex xs12>
-              <v-spacer></v-spacer>
+              <v-spacer />
               <v-btn
                 :disabled="!valid"
                 class="success"
@@ -72,7 +83,6 @@
             </v-flex>
           </v-layout>
         </v-container>
-
       </v-flex>
     </v-layout>
   </v-container>

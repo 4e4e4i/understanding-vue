@@ -6,7 +6,7 @@
           <v-img
             src="https://cdn.vuetifyjs.com/images/carousel/planet.jpg"
             height="300"
-          ></v-img>
+          />
           <v-card-text>
             <h1 class="text--primary mb-3">
               lorem
@@ -16,8 +16,12 @@
             </p>
           </v-card-text>
           <v-card-actions>
-            <v-btn class="warning">Edit</v-btn>
-            <v-btn class="success">Buy</v-btn>
+            <v-btn class="warning">
+              Edit
+            </v-btn>
+            <v-btn class="success">
+              Buy
+            </v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>

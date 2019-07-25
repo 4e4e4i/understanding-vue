@@ -1,7 +1,11 @@
 <template>
   <v-container>
     <v-layout row>
-      <v-flex xs12 sm6 offset-sm-3>
+      <v-flex
+        xs12
+        sm6
+        offset-sm-3
+      >
         <h1 class="text--secondary mb-3">
           Orders
         </h1>
@@ -20,12 +24,16 @@
                   color="success"
                   :input-value="order.done"
                   @change="markDone(order)"
-                ></v-checkbox>
+                />
               </v-list-item-action>
 
               <v-list-item-content>
-                <v-list-item-title>{{ order.name }}</v-list-item-title>
-                <v-list-item-subtitle>{{ order.phone }}</v-list-item-subtitle>
+                <v-list-item-title>
+                  {{ order.name }}
+                </v-list-item-title>
+                <v-list-item-subtitle>
+                  {{ order.phone }}
+                </v-list-item-subtitle>
               </v-list-item-content>
 
               <v-list-item-action>

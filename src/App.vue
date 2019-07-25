@@ -1,9 +1,9 @@
 <template>
   <v-app>
     <v-navigation-drawer
+      v-model="drawer"
       temporary
       app
-      v-model="drawer"
     >
       <v-list>
         <v-list-item
@@ -15,26 +15,35 @@
             <v-icon>{{ link.icon }}</v-icon>
           </v-list-item-icon>
           <v-list-item-content>
-            <v-list-item-title v-text="link.title"></v-list-item-title>
+            <v-list-item-title v-text="link.title" />
           </v-list-item-content>
         </v-list-item>
       </v-list>
-
     </v-navigation-drawer>
 
-    <v-app-bar app color="primary" dark>
+    <v-app-bar
+      app
+      color="primary"
+      dark
+    >
       <v-btn
         icon
-        @click="drawer = !drawer"
         class="hidden-md-and-up"
+        @click="drawer = !drawer"
       >
         <v-icon>menu</v-icon>
       </v-btn>
       <v-toolbar-title>
-        <router-link to="/" tag="span" class="pointer">Ad application</router-link>
+        <router-link
+          to="/"
+          tag="span"
+          class="pointer"
+        >
+          Ad application
+        </router-link>
       </v-toolbar-title>
 
-      <v-spacer></v-spacer>
+      <v-spacer />
 
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn
@@ -52,7 +61,7 @@
     </v-app-bar>
 
     <v-content>
-      <router-view></router-view>
+      <router-view />
     </v-content>
   </v-app>
 </template>
