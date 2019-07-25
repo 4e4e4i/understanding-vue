@@ -59,12 +59,12 @@ export default {
           imageSrc
         })
 
-        commit('setLoading', false)
         commit('createAd', {
           ...newAd,
           id: fbValue.key,
           imageSrc
         })
+        commit('setLoading', false)
       } catch (error) {
         commit('setError', error.message)
         commit('setLoading', false)

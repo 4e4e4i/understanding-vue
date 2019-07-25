@@ -27,9 +27,10 @@ new Vue({
     fb.auth().onAuthStateChanged(user => {
       if (user) {
         this.$store.dispatch('autoLoginUser', user)
-        this.$store.dispatch('fetchAds')
       }
     })
+
+    this.$store.dispatch('fetchAds')
   },
   render: h => h(App)
 }).$mount('#app')

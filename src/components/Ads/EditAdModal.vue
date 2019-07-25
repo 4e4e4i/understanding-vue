@@ -5,7 +5,7 @@
   >
     <template v-slot:activator="{ on }">
       <v-btn
-        class="warning"
+        class="warning mr-3"
         v-on="on"
       >
         Edit
