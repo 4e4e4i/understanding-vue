@@ -1,8 +1,11 @@
 <template>
   <v-container>
-    <v-layout row>
+    <v-layout
+      v-if="!loading"
+      row
+    >
       <v-flex xs12>
-        <v-card v-if="!loading">
+        <v-card>
           <v-img
             :src="ad.imageSrc"
             height="300"
@@ -24,28 +27,28 @@
             <app-buy-modal :ad="ad" />
           </v-card-actions>
         </v-card>
-        <div
-          v-else
-          class="text-center pt-10"
-        >
-          <v-progress-circular
-            :size="70"
-            :width="7"
-            color="blue"
-            indeterminate
-          />
-        </div>
       </v-flex>
     </v-layout>
+    <div
+      v-else
+      class="text-center pt-10"
+    >
+      <v-progress-circular
+        :size="70"
+        :width="7"
+        color="blue"
+        indeterminate
+      />
+    </div>
   </v-container>
 </template>
 
 <script>
-import EdditModal from './EditAdModal'
+import EditModal from './EditAdModal'
 
 export default {
   components: {
-    addEditModal: EdditModal
+    addEditModal: EditModal
   },
   props: {
     id: {
@@ -62,7 +65,11 @@ export default {
       return this.$store.getters.loading
     },
     isOwner () {
-      return this.ad.ownerId === this.$store.getters.user.id
+      if (this.$store.getters.user) {
+        return this.ad.ownerId === this.$store.getters.user.id
+      } else {
+        return false
+      }
     }
   }
 }

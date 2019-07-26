@@ -21,6 +21,7 @@
           </v-list-item-content>
         </v-list-item>
         <v-list-item
+          v-if="isUserLoggedIn"
           @click="onLogout"
         >
           <v-list-item-icon>
@@ -28,7 +29,7 @@
               exit_to_app
             </v-icon>
           </v-list-item-icon>
-          <v-list-item-content v-if="isUserLoggedIn">
+          <v-list-item-content>
             <v-list-item-title v-text="'Logout'" />
           </v-list-item-content>
         </v-list-item>

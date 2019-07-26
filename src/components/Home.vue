@@ -1,6 +1,9 @@
 <template>
   <div v-if="!loading">
-    <v-container fluid>
+    <v-container
+      fluid
+      class="mb-2"
+    >
       <v-layout row>
         <v-flex xs12>
           <v-carousel v-if="promoAds.length > 0">

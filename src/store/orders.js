@@ -59,7 +59,7 @@ export default {
     async markOrderDone ({ commit, getters }, payload) {
       commit('clearError')
       try {
-        await fb.database().ref(`/users/${getters.user.id}/order`).child(payload).update({
+        await fb.database().ref(`/users/${getters.user.id}/orders`).child(payload).update({
           done: true
         })
       } catch (error) {
